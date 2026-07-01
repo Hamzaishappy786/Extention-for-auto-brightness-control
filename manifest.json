@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Adaptive Brightness Dimmer",
+  "version": "1.0.0",
+  "description": "Automatically dims glaring white pages and leaves dark pages untouched, based on real-time background luminance detection.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/luminance.js", "content/overlay.js", "content/main.js", "content/shortcuts.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "increase-intensity": {
+      "suggested_key": { "default": "Ctrl+Shift+Up", "mac": "Command+Shift+Up" },
+      "description": "Increase dimmer intensity"
+    },
+    "decrease-intensity": {
+      "suggested_key": { "default": "Ctrl+Shift+Down", "mac": "Command+Shift+Down" },
+      "description": "Decrease dimmer intensity"
+    },
+    "toggle-enabled": {
+      "suggested_key": { "default": "Ctrl+Shift+O", "mac": "Command+Shift+O" },
+      "description": "Toggle adaptive dimmer on/off"
+    }
+  }
+}
