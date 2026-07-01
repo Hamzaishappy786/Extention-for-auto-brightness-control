@@ -1,0 +1,22 @@
+body {
+  width: 260px;
+  font-family: system-ui, sans-serif;
+  padding: 12px;
+}
+
+h1 {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.row span {
+  flex: 1;
+}
